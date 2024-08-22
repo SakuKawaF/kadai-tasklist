@@ -7,8 +7,8 @@
 
         <div class="flex-none">
             <ul tabindex="0" class="menu lg:block lg:menu-horizontal">
-                {{-- メッセージ作成ページへのリンク --}}
-                <li><a class="link link-hover" href="{{ route('tasks.create') }}">新規メッセージの投稿</a></li>
+                {{-- タスク作成ページへのリンク --}}
+                <li><a class="link link-hover" href="{{ route('tasks.create') }}">新規タスクの投稿</a></li>
             </ul>
         </div>
     </nav>
