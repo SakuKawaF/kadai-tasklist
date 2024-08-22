@@ -16,7 +16,7 @@ use App\Http\Controllers\TasksController;
 
 Route::get('/', [TasksController::class, 'index']);
 Route::resource('tasks', TasksController::class);
-
+/*
 Route::get('tasks/{id}', [TasksController::class, 'show']);
 Route::post('tasks/ceate', [TasksController::class, 'store']);
 Route::put('tasks/{id}', [TasksController::class, 'update']);
@@ -25,3 +25,4 @@ Route::delete('tasks/{id}', [TasksController::class, 'destroy']);
 Route::get('tasks', [TasksController::class, 'index'])->name('tasks.index');
 Route::get('tasks/create', [TasksController::class, 'create'])->name('tasks.create');
 Route::get('tasks/{id}/edit', [TasksController::class, 'edit'])->name('tasks.edit');
+*/
