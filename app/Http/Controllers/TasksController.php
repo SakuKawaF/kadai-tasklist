@@ -95,11 +95,15 @@ public function show($id)
         // idの値でメッセージを検索して取得
         $task = task::findOrFail($id);
         // メッセージ編集ビューでそれを表示
-        return view('tasks.edit', [
+        if (\Auth::id() === $task->user_id) {
+           return view('tasks.edit', [
             'task' => $task,
             'content' => $task->content,
-            'id' => $id
-        ]);
+            'id' => '$id'
+            ]);
+            return redirect('/');
+        }
+         return redirect('/');
     }
     public function update(Request $request, $id)
     {
