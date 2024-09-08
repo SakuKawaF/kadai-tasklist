@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @if (Auth::check())
+    @if (Auth::id() == $task->user_id)
         <div class="prose ml-4">
             <h2>id = {{ $task->id }} のタスク詳細ページ</h2>
         </div>
@@ -31,5 +31,7 @@
             <button type="submit" class="btn btn-error btn-outline" 
                 onclick="return confirm('id = {{ $task->id }} のタスクを削除します。よろしいですか？')">削除</button>
         </form>
+    @else
+        return redirect('/')
     @endif
 @endsection
