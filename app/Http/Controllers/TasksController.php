@@ -66,9 +66,9 @@ public function show($id)
         $task = task::findOrFail($id);
 
         // メッセージ詳細ビューでそれを表示
-        return view('show', [
+        return view('tasks.show', [
             'task' => $task,
-            'content' => $content,
+            'content' => $task->content,
             'id' => '$id'
         ]);
     }
