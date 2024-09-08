@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="prose ml-4">
-        <h2 class="text-lg">id: {{ $tasks->id }} のタスク編集ページ</h2>
+        <h2 class="text-lg">id: {{ $task->id }} のタスク編集ページ</h2>
     </div>
 
     <div class="flex justify-center">

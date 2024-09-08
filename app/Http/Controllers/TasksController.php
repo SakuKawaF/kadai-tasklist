@@ -45,12 +45,12 @@ class TasksController extends Controller
 public function destroy(string $id)
     {
         // idの値で投稿を検索して取得
-        $task = Taks::findOrFail($id);
+        $task = task::findOrFail($id);
         
         // 認証済みユーザー（閲覧者）がその投稿の所有者である場合は投稿を削除
         if (\Auth::id() === $task->user_id) {
             $task->delete();
-            return back()
+            return redirect('/')
                 ->with('success','Delete Successful');
         }
 
@@ -89,10 +89,30 @@ public function show($id)
  public function edit($id)
     {
         // idの値でメッセージを検索して取得
-        $task = Task::findOrFail($id);
+        $task = task::findOrFail($id);
         // メッセージ編集ビューでそれを表示
         return view('tasks.edit', [
             'task' => $task,
+            'content' => $task->content,
+            'id' => $id
         ]);
     }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'content' => 'required',
+            'status' => 'required|max:10',
+        ]);
+
+        // idの値でメッセージを検索して取得
+        $task = Task::findOrFail($id);
+        // メッセージを更新
+        $task->content = $request->content;
+        $task->status = $request->status;
+        $task->save();
+
+        // トップページへリダイレクトさせる
+        return redirect('/');
+    }
+
 }
